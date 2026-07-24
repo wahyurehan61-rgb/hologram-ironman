@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Hand Tracking Foundation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="stage">
+    <!-- Layer 1: mirrored webcam feed, fills the viewport -->
+    <video id="webcam" autoplay muted playsinline></video>
+
+    <!-- Layer 1.5: WebGL transparent hologram overlay -->
+    <canvas id="hologram-canvas"></canvas>
+
+    <!-- Layer 2: Canvas2D debug overlay (landmarks, skeleton, palm, bbox, text) -->
+    <canvas id="overlay-canvas"></canvas>
+
+    <!-- Bottom-left: realtime palm X/Y/Z readout -->
+    <div id="palm-coord" class="hud-panel hud-bottom-left"></div>
+
+    <!-- Right side: semi-transparent debug panel -->
+    <aside id="debug-panel" class="hud-panel hud-right"></aside>
+
+    <!-- Boot / error messaging -->
+    <div id="status-message"></div>
+  </div>
+
+  <!-- Taruh kode importmap tepat di bawah penutup tag </div> dari stage -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
+      }
+    }
+  </script>
+
+  <!-- Posisinya harus berada tepat sebelum pemanggilan js/main.js -->
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
